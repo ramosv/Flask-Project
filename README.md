@@ -36,3 +36,44 @@ project/
     -pip install cython
     -Optional: build cything extensions ahead of install
     -python setup.py build_ext
+
+## Running the app from local machine
+$ flask -app app run
+
+## Run in debug mode
+$$ flask --app app run --debug
+
+
+### Running the app from local network
+$ flask run --host=0.0.0.0 
+    -this tells OS to listen on all public IPs
+
+### application layout should look like this:
+/home/user/Projects/flask-tutorial
+├── flaskr/
+│   ├── __init__.py
+│   ├── db.py
+│   ├── schema.sql
+│   ├── auth.py
+│   ├── blog.py
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── auth/
+│   │   │   ├── login.html
+│   │   │   └── register.html
+│   │   └── blog/
+│   │       ├── create.html
+│   │       ├── index.html
+│   │       └── update.html
+│   └── static/
+│       └── style.css
+├── tests/
+│   ├── conftest.py
+│   ├── data.sql
+│   ├── test_factory.py
+│   ├── test_db.py
+│   ├── test_auth.py
+│   └── test_blog.py
+├── .venv/
+├── pyproject.toml
+└── MANIFEST.in
