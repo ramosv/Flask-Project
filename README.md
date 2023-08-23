@@ -13,14 +13,23 @@ $ (.venv) shows activating virtual enviroment was successful
 
 ### Install flask
 $ pip install flask
+$ pip install flask-login
+$ pip install flask-sqlalchemy
 
 Add .venv to git.ignore that way we are pushing the enviroment to github
 $ touch .gitignore
 
 
 ### Flash Building Blocks
-app.py: Creates the app and starts the server.   
+app.py or main.py: Creates the app and starts the server.
+
+
 models.py: Define what the entity will look like (e.g, UserModel has username, email, password etc.) 
+auth.py: handles authentiction login data
+views.py: front end of the application
+__init__.py: This file makes the site folder a python package
+Allows contects of site to run automatomatically
+works sort of as a constructor for the site folder
 controllers.py: Fetches Data from database, generates HTML and sends the response to the user browser.
 
 ### Hirarchy
@@ -29,13 +38,6 @@ project/
     - models.py
     - controllers.py
 
-## Install SQLAlchemy
--$ pip install SQLAlchemy
--cd into SQLAlchemy source distibution
-    -cd path/to/sqlalchemy
-    -pip install cython
-    -Optional: build cything extensions ahead of install
-    -python setup.py build_ext
 
 ## Running the app from local machine
 $ flask -app app run
@@ -48,32 +50,3 @@ $$ flask --app app run --debug
 $ flask run --host=0.0.0.0 
     -this tells OS to listen on all public IPs
 
-### application layout should look like this:
-/home/user/Projects/flask-tutorial
-├── flaskr/
-│   ├── __init__.py
-│   ├── db.py
-│   ├── schema.sql
-│   ├── auth.py
-│   ├── blog.py
-│   ├── templates/
-│   │   ├── base.html
-│   │   ├── auth/
-│   │   │   ├── login.html
-│   │   │   └── register.html
-│   │   └── blog/
-│   │       ├── create.html
-│   │       ├── index.html
-│   │       └── update.html
-│   └── static/
-│       └── style.css
-├── tests/
-│   ├── conftest.py
-│   ├── data.sql
-│   ├── test_factory.py
-│   ├── test_db.py
-│   ├── test_auth.py
-│   └── test_blog.py
-├── .venv/
-├── pyproject.toml
-└── MANIFEST.in
